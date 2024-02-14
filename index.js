@@ -23,12 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const noBtn = document.getElementById("no-btn");
   const valentineContainer = document.getElementById("valentine-container");
 
-  console.log(noBtn)
   function enlargeYesButton() {
     const currentWidth = parseFloat(window.getComputedStyle(yesBtn).getPropertyValue('width'));
     const currentHeight = parseFloat(window.getComputedStyle(yesBtn).getPropertyValue('height'));
-    yesBtn.style.width = `${currentWidth * 1.25}px`;
-    yesBtn.style.height = `${currentHeight * 1.25}px`;
 
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
@@ -40,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function () {
       message.style.position = 'absolute';
       message.style.top = '35%';
       valentineContainer.appendChild(message);
+    } else {
+      yesBtn.style.width = `${currentWidth * 1.25}px`;
+      yesBtn.style.height = `${currentHeight * 1.25}px`;
     }
   }
 
@@ -70,7 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const message = document.createElement('div');
     message.id = 'message';
-    message.textContent = 'Thank you! I love you babe!';
+    const messageText = document.createElement('span');
+    messageText.classList.add('message-text');
+    messageText.innerHTML = `HAPPY VALENTINES DAY! <br> I LOVE YOU DANI!!! <br> 🌹🌹🌹`;
+    message.appendChild(messageText);
     valentineContainer.appendChild(message);
   });
 });
